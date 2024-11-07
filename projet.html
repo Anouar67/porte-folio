@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Azzin El Mourabit Anouar</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Lien vers le fichier CSS externe -->
+</head>
+<body>
+    <!-- Bannière en haut avec un logo à gauche qui ramène à la page d'accueil -->
+    <div id="banniere" class="banniere">
+        <!-- Logo de retour à l'accueil (aligné à gauche) -->
+        <a href="index.html" title="Retour à l'accueil">
+            <img src="A.png" alt="Accueil" class="logo-accueil">
+        </a>
+        
+        <!-- Texte Portfolio dans la bannière -->
+        <h2 class="portfolio-text">Portfolio</h2>
+
+        <!-- Contenu à droite de la bannière (LinkedIn, email, téléphone) -->
+        <div class="banniere-right">
+            <a href="https://www.linkedin.com/in/anouar-azzin-803473320/" target="_blank" title="LinkedIn">
+                <img src="LINKEDIN.png" alt="LinkedIn" class="linkedin-logo">
+            </a>
+            <a href="javascript:void(0);" title="Voir mon email" onclick="showEmailInfo()">
+                <img src="email.png" alt="Email" class="email-logo">
+            </a>
+            <a href="javascript:void(0);" title="Voir mon numéro" onclick="showPhoneInfo()">
+                <img src="TELEPHONE.png" alt="Téléphone" class="phone-logo">
+            </a>
+        </div>
+    </div>
+
+    <!-- Section de la grille de cartes -->
+    <div class="card-container">
+        <a href="page1.html" class="card"style="background-color:#ff0000;color:#ffffff;">INFORMATIONS</a>
+        <a href="page2.html" class="card"style="background-color:#ff0000 ;color:#ffffff;">EXPERIENCES</a>
+        <a href="page3.html" class="card"style="background-color:#ff0000 ;color:#ffffff;">REALISATIONS</a>
+        <a href="page4.html" class="card"style="background-color:#ff0000 ;color:#ffffff;">NEWS</a>
+        <a href="page5.html" class="card"style="background-color:#ff0000 ;color:#ffffff;">METIERS</a>
+    </div>
+
+    <img src="welcome.webp" alt="Welcome" class="welcome">
+
+    <!-- Fenêtre modale pour afficher les infos -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <div class="modal-info">
+                <h2>Mes coordonnées</h2>
+                <div id="modal-content-email" class="modal-item" style="display: none;">
+                    <p>anouarazzin.67@gmail.com</p>
+                </div>
+                <div id="modal-content-phone" class="modal-item" style="display: none;">
+                    <p>06 95 62 30 09</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript pour gérer la modale -->
+    <script>
+        function showEmailInfo() {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("modal-content-email").style.display = "block";
+            document.getElementById("modal-content-phone").style.display = "none";
+        }
+
+        function showPhoneInfo() {
+            document.getElementById("modal").style.display = "block";
+            document.getElementById("modal-content-phone").style.display = "block";
+            document.getElementById("modal-content-email").style.display = "none";
+        }
+
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        window.addEventListener('scroll', function() {
+            const banniere = document.getElementById('banniere');
+            if (window.scrollY > 50) {
+                banniere.classList.add('banniere-reduite');
+            } else {
+                banniere.classList.remove('banniere-reduite');
+            }
+        });
+    </script>
+
+    <style>
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        
+        .card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        @media (max-width: 800px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 500px) {
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</body>
+</html>
